@@ -1,0 +1,1 @@
+export { AverageValueLabel } from './AverageValueLabel';

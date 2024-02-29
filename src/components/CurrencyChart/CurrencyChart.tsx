@@ -3,6 +3,8 @@ import { ReactECharts } from '../shared/Echarts/ReactECharts';
 
 import './currencyChart.css';
 import { Layout } from '@consta/uikit/Layout';
+import { AverageValueLabel } from './AverageValueLabel';
+import { currencyFormatter } from '../../utils/currencyFormatter';
 
 interface CurrencyChartProps {
   currencyData: CurrencyInfo[];
@@ -42,18 +44,8 @@ export const CurrencyChart: FC<CurrencyChartProps> = ({ currencyData }) => {
     tooltip: {
       trigger: 'axis',
       className: 'currency-tooltip',
-      // formatter: (params) => {
-      //   console.log(params);
-      //   const tooltipTitle = params[0].name;
-      //   let tooltipContent = '';
-
-      //   params.forEach(function (item) {
-      //     tooltipContent += item.seriesName + ': ' + item.value + '<br>';
-      //   });
-
-      //   // Apply HTML styling to make the title bold
-      //   return '<strong>' + tooltipTitle + '</strong><br>' + tooltipContent;
-      // },
+      valueFormatter: (value: string | number): string =>
+        currencyFormatter.format(Number(value)),
     },
     xAxis: {
       type: 'category',
@@ -107,21 +99,7 @@ export const CurrencyChart: FC<CurrencyChartProps> = ({ currencyData }) => {
   return (
     <Layout className="chart-container">
       <ReactECharts option={option} />
-      <div className="average-container">
-        <h5 className="average-title">Среднее за период</h5>
-        <div>
-          <span className="average-value">{averageValue}&nbsp;</span>
-          <span className="average-currency">₽</span>
-        </div>
-      </div>
-      <div className="parent">
-        <div>
-          <div>
-            <div className="child"></div>
-            <div></div>
-          </div>
-        </div>
-      </div>
+      <AverageValueLabel value={averageValue} />
     </Layout>
   );
 };

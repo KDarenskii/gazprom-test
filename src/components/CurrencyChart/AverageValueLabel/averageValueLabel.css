@@ -1,0 +1,24 @@
+.average-container {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  text-align: center;
+}
+
+.average-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: #667985;
+  margin-bottom: 10px;
+}
+
+.average-value {
+  font-size: 48px;
+  color: #f38b00;
+}
+
+.average-currency {
+  font-size: 20px;
+  color: #667985;
+}
