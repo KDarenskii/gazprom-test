@@ -27,7 +27,7 @@ export const getChartConfig = ({
     },
     color: '#F38B00',
     grid: {
-      right: 200,
+      right: 75,
     },
     tooltip: {
       trigger: 'axis',
