@@ -5,23 +5,31 @@ import './currencyChart.css';
 import { Layout } from '@consta/uikit/Layout';
 import { AverageValueLabel } from './AverageValueLabel';
 import { currencyFormatter } from '../../utils/currencyFormatter';
+import { CurrencyController } from './CurrencyController';
+import { currencySymbols } from '../../constants/currencySymbols';
 
 interface CurrencyChartProps {
   currencyData: CurrencyInfo[];
 }
 
 export const CurrencyChart: FC<CurrencyChartProps> = ({ currencyData }) => {
-  const [currencyIndicator] = useState<string>(currencyData[0].indicator);
+  const [currencyIndicator, setCurrencyIndicator] = useState<string>(
+    currencyData[0].indicator
+  );
 
-  const filteredCurrencyData = currencyData.filter(
+  const filteredCurrencyByIndicator = currencyData.filter(
     (currency) => currency.indicator === currencyIndicator
   );
 
   const months = Array.from(
-    new Set(filteredCurrencyData.map(({ month }) => month))
+    new Set(filteredCurrencyByIndicator.map(({ month }) => month))
   );
 
-  const values = filteredCurrencyData.map((currency) => currency.value);
+  const currencies = Array.from(
+    new Set(currencyData.map(({ indicator }) => indicator))
+  );
+
+  const values = filteredCurrencyByIndicator.map((currency) => currency.value);
 
   const averageValue = (
     values.reduce((sum, value) => sum + value, 0) / values.length
@@ -29,7 +37,7 @@ export const CurrencyChart: FC<CurrencyChartProps> = ({ currencyData }) => {
 
   const option = {
     title: {
-      text: 'КУРС ДОЛЛАРА, $/₽',
+      text: `КУРС ДОЛЛАРА, ${currencySymbols[currencyIndicator]}/₽`,
       textStyle: {
         fontWeight: 'bold',
         fontFamily: 'Inter',
@@ -100,6 +108,11 @@ export const CurrencyChart: FC<CurrencyChartProps> = ({ currencyData }) => {
     <Layout className="chart-container">
       <ReactECharts option={option} />
       <AverageValueLabel value={averageValue} />
+      <CurrencyController
+        currencies={currencies}
+        value={currencyIndicator}
+        onChange={setCurrencyIndicator}
+      />
     </Layout>
   );
 };
