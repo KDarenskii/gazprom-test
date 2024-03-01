@@ -3,5 +3,30 @@
   "semicolons": true,
   "trailingComma": "es5",
   "singleQuote": true,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)",
+    "<THIRD_PARTY_MODULES>",
+    "^pages/(.*)$",
+    "^ui/(.*)$",
+    "^screens/(.*)$",
+    "^components/(.*)$",
+    "^store/(.*)$",
+    "^hooks/(.*)$",
+    "^services/(.*)$",
+    "^api/(.*)$",
+    "^utils/(.*)$",
+    "^helpers/(.*)$",
+    "^types/(.*)$",
+    "^assets/(.*)$",
+    "^constants/(.*)$",
+    "^styles/(.*)$",
+    "^../(.*)$",
+    "^./[^.]*$",
+    "^./(.*)\\.(?!css|scss)$", 
+    "^.*\\.(css|scss)$" 
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

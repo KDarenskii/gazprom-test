@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { CurrencyService } from '../../service/CurrencyService';
+
+import { CurrencyService } from 'service/CurrencyService';
+
 import { getChartConfig } from './getChartConfig';
 
 export const useCurrencyChart = () => {

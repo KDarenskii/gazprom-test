@@ -1,13 +1,16 @@
 import { FC } from 'react';
-import { ReactECharts } from '../shared/Echarts/ReactECharts';
-import { Loader } from '@consta/uikit/Loader';
-import { Informer } from '@consta/uikit/Informer';
 
-import './currencyChart.css';
+import { Informer } from '@consta/uikit/Informer';
 import { Layout } from '@consta/uikit/Layout';
+import { Loader } from '@consta/uikit/Loader';
+
+import { ReactECharts } from 'components/shared/Echarts/ReactECharts';
+
 import { AverageValueLabel } from './AverageValueLabel';
 import { CurrencyController } from './CurrencyController';
 import { useCurrencyChart } from './useCurrencyChart';
+
+import './currencyChart.css';
 
 export const CurrencyChart: FC = () => {
   const {

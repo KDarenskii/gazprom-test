@@ -1,18 +1,17 @@
 import { FC } from 'react';
 
-import './app.css';
-
 import { Layout } from '@consta/uikit/Layout';
-import { CurrencyChart } from '../CurrencyChart';
 
-import { mockData } from '../../assets/data/data';
-import { ThemeProvider } from '../providers/ThemeProvider';
+import { CurrencyChart } from 'components/CurrencyChart';
+import { ThemeProvider } from 'components/providers/ThemeProvider';
+
+import './app.css';
 
 export const App: FC = () => {
   return (
     <ThemeProvider>
       <Layout className="app-wrapper">
-        <CurrencyChart currencyData={mockData} />
+        <CurrencyChart />
       </Layout>
     </ThemeProvider>
   );

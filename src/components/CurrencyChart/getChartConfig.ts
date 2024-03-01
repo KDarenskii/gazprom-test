@@ -1,5 +1,6 @@
-import { currencySymbols } from '../../constants/currencySymbols';
-import { currencyFormatter } from '../../utils/currencyFormatter';
+import { currencyFormatter } from 'utils/currencyFormatter';
+
+import { currencySymbols } from 'constants/currencySymbols';
 
 interface GetChartConfigParams {
   indicator: string | null;

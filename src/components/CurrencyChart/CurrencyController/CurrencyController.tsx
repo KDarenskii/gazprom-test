@@ -1,6 +1,8 @@
 import { FC } from 'react';
+
 import { ChoiceGroup } from '@consta/uikit/ChoiceGroup';
-import { currencySymbols } from '../../../constants/currencySymbols';
+
+import { currencySymbols } from 'constants/currencySymbols';
 
 interface CurrencyControllerProps {
   value: string;
