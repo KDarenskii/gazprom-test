@@ -4,6 +4,8 @@ import { ChoiceGroup } from '@consta/uikit/ChoiceGroup';
 
 import { currencySymbols } from 'constants/currencySymbols';
 
+import './currencyController.css';
+
 interface CurrencyControllerProps {
   value: string;
   onChange: (value: string) => void;
@@ -18,6 +20,7 @@ export const CurrencyController: FC<CurrencyControllerProps> = ({
   return (
     <div>
       <ChoiceGroup
+        className="chart-choice"
         value={value}
         onChange={({ value }) => onChange(value)}
         getItemLabel={(indicator) => currencySymbols[indicator]}

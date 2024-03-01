@@ -27,7 +27,7 @@ export const getChartConfig = ({
     },
     color: '#F38B00',
     grid: {
-      right: 75,
+      right: 85,
     },
     tooltip: {
       trigger: 'axis',
@@ -42,6 +42,7 @@ export const getChartConfig = ({
         fontSize: 10,
         color: 'rgba(#002033, 0.6)',
       },
+      boundaryGap: false,
       data: months,
       offset: 25,
       axisTick: {
