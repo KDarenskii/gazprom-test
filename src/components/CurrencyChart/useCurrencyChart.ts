@@ -33,27 +33,33 @@ export const useCurrencyChart = () => {
     getCurrencyData();
   }, []);
 
+  // get currency only with chosen indicator
   const filteredCurrencyByIndicator = currencyData.filter(
     (currency) => currency.indicator === currencyIndicator
   );
 
+  // get all unique months
   const uniqueMonths = Array.from(
     new Set(filteredCurrencyByIndicator.map(({ month }) => month))
   );
 
+  // get all unique indicators
   const uniqueIndicators = Array.from(
     new Set(currencyData.map(({ indicator }) => indicator))
   );
 
+  // get values from chosen currency
   const currencyValues = filteredCurrencyByIndicator.map(
     (currency) => currency.value
   );
 
+  // calculate average currency value
   const averageValue = (
     currencyValues.reduce((sum, value) => sum + value, 0) /
     currencyValues.length
   ).toFixed(1);
 
+  // initiate chart config
   const config = getChartConfig({
     indicator: currencyIndicator,
     values: currencyValues,
