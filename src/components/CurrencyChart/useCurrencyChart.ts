@@ -14,11 +14,16 @@ export const useCurrencyChart = () => {
   );
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const getCurrencyData = async () => {
       setIsLoading(true);
       setError(null);
+
       try {
-        const { data } = await CurrencyService.getAll();
+        const { data } = await CurrencyService.getAll({
+          signal: controller.signal,
+        });
         setCurrencyData(data);
         if (data.length > 0) {
           setCurrencyIndicator(data[0].indicator);
@@ -31,6 +36,11 @@ export const useCurrencyChart = () => {
     };
 
     getCurrencyData();
+
+    return () => {
+      // cancel request if components is unmounted
+      controller.abort();
+    };
   }, []);
 
   // get currency only with chosen indicator
